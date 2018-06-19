@@ -102,8 +102,6 @@ class jhuPlot(jhuXmlToDf, jhuNameLongToShort):
 
         roi_num = self.jhu_df.groupby(['Template', 'side', 'short_name']).get_group((Template, side, short_name)).index[0]        
         roi_data = np.ma.masked_where(template_data == int(roi_num), template_data).mask.astype(int)
-        print(roi_data)
-        print(np.sum(roi_data))
         roi_img = nb.Nifti2Image(roi_data, 
                                  affine=template_img.affine)
         long_name = self.jhu_df.groupby(['Template', 'side', 'short_name']).get_group((Template, side, short_name)).ROI.iloc[0]
