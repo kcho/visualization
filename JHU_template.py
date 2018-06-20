@@ -107,10 +107,10 @@ class jhuPlot(jhuXmlToDf, jhuNameLongToShort):
         long_name = self.jhu_df.groupby(['Template', 'side', 'short_name']).get_group((Template, side, short_name)).ROI.iloc[0]
 
 
-        plotting.plot_roi(roi_img, 
-                          bg_img=self.FA_mni_img, 
-                          title=long_name,
-                          cmap='autumn')
+        self.roi_draw = plotting.plot_roi(roi_img, 
+                                          bg_img=self.FA_mni_img, 
+                                          title=long_name,
+                                          cmap='autumn')
                           #draw_cross=False)
         plt.show()
 
